@@ -4,13 +4,15 @@ import Movies from './Movies'
 
 const UserTwo = (props) => {
     return(
-        <div>
+        <div className="user">
             {
                 props.secondUserOptionsExist ? (
                     <div>
                         <Movies key={props.movie.id} movie={props.movie}/>
-                        <button onClick={() => props.addToBothLike(props.movie)}>Like</button>
-                        <button onClick={() => props.skipMovie(props.movie)}>Skip</button>
+                        <div className="btns">
+                            <button className="swipe-btn" onClick={() => props.addToBothLike(props.movie)}>Like</button>
+                            <button className="swipe-btn" onClick={() => props.skipMovie(props.movie)}>Skip</button>
+                        </div>
                     </div>
                 ) : (<div>User One must select more movies!</div>)
             }

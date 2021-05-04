@@ -1,13 +1,15 @@
 import React from 'react';
-import '../Movie.css'
 
 const IMG_API = "https://image.tmdb.org/t/p/w500";
 
 const Movies = (props) => {
     return(
         <div className="movie-card">
-            <img src={`${IMG_API}${props.movie.poster_path}`} />
-            {props.movie.original_title}
+            <img className="poster" src={`${IMG_API}${props.movie.poster_path}`} />
+            <div className="details">
+                <p>{props.movie.original_title} ({props.movie.release_date})</p>
+                <main>{props.movie.overview}</main>
+            </div>
         </div>
     );
 }

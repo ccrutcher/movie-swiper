@@ -4,11 +4,12 @@ import Movies from './Movies'
 
 const UserOne = (props) => {
     return(
-        <div>
+        <div className="user">
             <Movies key={props.movie.id} movie={props.movie}/>
-            <button onClick={() => props.addToFirstUserPicks(props.movie)}>Like</button>
-            <button onClick={() => props.skipMovie(props.movie)}>Skip</button>
-
+            <div className="btns">
+                <button className="swipe-btn" onClick={() => props.addToFirstUserPicks(props.movie)}>Like</button>
+                <button className="swipe-btn" onClick={() => props.skipMovie(props.movie)}>Skip</button>
+            </div>
         </div>
     );
 }

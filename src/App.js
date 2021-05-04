@@ -2,8 +2,11 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import UserOne from './Components/UserOne'
 import UserTwo from './Components/UserTwo'
+import Results from './Components/Results'
 
 //API KEY
+
+
 const URL = `https://api.themoviedb.org/3/discover/movie/?api_key=`
 
 function App() {
@@ -13,8 +16,10 @@ function App() {
   const [secondUserOptions, setSecondUserOptions] = useState([])
   const [secondUserOptionsExist, setSecondUserOptionsExist] = useState(false)
   const [bothLiked, setBothLike] = useState([])
+  const [bothLikeExists, setBothLikeExist] = useState(false)
   const [currentUser, setUser] = useState(1)
   const [userPage, setUserPage] = useState()
+
 
 
   //Fetch api and set movies state to return data
@@ -31,6 +36,7 @@ function App() {
 
   //re-render UserOne whenever the movies list changes
   useEffect(()=> {
+    console.log(movies)
     setUserPage(<UserOne movie={movies[0]} addToFirstUserPicks={addToFirstUserPicks} skipMovie={skipFirstUser} />)
   }, [movies])
 
@@ -50,17 +56,15 @@ function App() {
     setMovies(movies.filter((movie, index) => index !== 0))
   }
 
-
-
   function userTwoLike(movieToLike){
-    setBothLike([...bothLiked, movieToLike]);
+    setBothLike([...bothLiked, movieToLike])
+    setBothLikeExist(true)
     validateSecondOptions()
   }
 
   function skipSecondUser(){
     validateSecondOptions()
   }
-
 
   function validateSecondOptions(){
     setFirstUserPicks(firstUserPicks.filter((movie, index) => index !== 0))
@@ -96,15 +100,29 @@ return (
     <div className="App">
       {isLoading ? 
         (<div>Loading...</div>) :
-        (<div>
-          <button onClick={toggleUser}>Current user is {currentUser}</button>
+        (<div className="container">
+        <div className="swipe-box">
           {userPage}
+          <div className="user-toggle">
+            Current user is {currentUser}
+            <button id="toggle" onClick={toggleUser}>Switch User</button>
+          </div>
+        </div>
 
-          <ul>
-          {bothLiked.map((movie) => {
-            return <li key={movie.id}>{movie.original_title}</li>
-          })}
-          </ul>
+        {
+          bothLikeExists ? (
+            <div className="results">
+            <ul>
+              {bothLiked.map((movie) => {
+                return <Results key={movie.id} movie={movie} />
+              })}
+              </ul>
+          </div>
+          ) : (
+            <></>
+          )
+        }
+
         </div>)
       }
     </div>
