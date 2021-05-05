@@ -7,7 +7,7 @@ const Results = (props) => {
         <div className="results-card">
             <img className="results-poster" src={`${IMG_API}${props.movie.poster_path}`} />
             <div className="results-details">
-                <p>{props.movie.original_title} ({props.movie.release_date})</p>
+                <p>{props.movie.original_title}</p>
 
             </div>
         </div>

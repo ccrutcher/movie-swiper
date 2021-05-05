@@ -21,7 +21,6 @@ function App() {
   const [userPage, setUserPage] = useState()
 
 
-
   //Fetch api and set movies state to return data
   useEffect(() => {
     async function getMovies() {
@@ -66,16 +65,6 @@ function App() {
     validateSecondOptions()
   }
 
-  function validateSecondOptions(){
-    setFirstUserPicks(firstUserPicks.filter((movie, index) => index !== 0))
-    if(firstUserPicks.length > 0){
-      setSecondUserOptionsExist(true)
-    }else{
-      setSecondUserOptionsExist(false)
-    }
-    setSecondUserOptions([...firstUserPicks])
-  }
-
   //Switches views between first and second user
   function toggleUser(){
     if(currentUser === 1){
@@ -96,6 +85,16 @@ function App() {
     validateSecondOptions()
   }
 
+  function validateSecondOptions(){
+    setFirstUserPicks(firstUserPicks.filter((movie, index) => index !== 0))
+    if(firstUserPicks.length > 0){
+      setSecondUserOptionsExist(true)
+    }else{
+      setSecondUserOptionsExist(false)
+    }
+    setSecondUserOptions([...firstUserPicks])
+  }
+
 return (
     <div className="App">
       {isLoading ? 
@@ -105,13 +104,14 @@ return (
           {userPage}
           <div className="user-toggle">
             Current user is {currentUser}
-            <button id="toggle" onClick={toggleUser}>Switch User</button>
+            <button id="toggle" className="swipe-btn" onClick={toggleUser}>Switch User</button>
           </div>
         </div>
 
         {
           bothLikeExists ? (
             <div className="results">
+              <span id="results-header">Results</span>
             <ul>
               {bothLiked.map((movie) => {
                 return <Results key={movie.id} movie={movie} />
