@@ -5,7 +5,7 @@ import UserTwo from './Components/UserTwo'
 import Results from './Components/Results'
 
 //API KEY
-
+const API_KEY = 'd5b91f6e07729e60db84163fcc408239';
 
 const URL = `https://api.themoviedb.org/3/discover/movie/?api_key=`
 
