@@ -4,9 +4,6 @@ import UserOne from './Components/UserOne'
 import UserTwo from './Components/UserTwo'
 import Results from './Components/Results'
 
-//API KEY
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 const URL = `http://api.themoviedb.org/3/discover/movie/?api_key=`
 
 function App() {
