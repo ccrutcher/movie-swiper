@@ -82,6 +82,7 @@ function setToFirstUser(){
 
 function setToSecondUser(){
   setUser(2)
+  validateSecondOptions()
 }
 
 //Suspected bug

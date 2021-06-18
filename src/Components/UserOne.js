@@ -15,7 +15,3 @@ const UserOne = (props) => {
 }
 
 export default UserOne;
-
-/*
-skipMovie={skipFirstUser}
-*/

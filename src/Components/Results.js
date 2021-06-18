@@ -5,7 +5,7 @@ const IMG_API = "https://image.tmdb.org/t/p/w500";
 const Results = (props) => {
     return(
         <div className="results-card">
-            <img className="results-poster" src={`${IMG_API}${props.movie.poster_path}`} />
+            <img className="results-poster" src={`${IMG_API}${props.movie.poster_path}`} alt="Movie Poster" />
             <div className="results-details">
                 <p>{props.movie.original_title}</p>
 

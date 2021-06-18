@@ -23,6 +23,7 @@ body{
     flex-direction: row;
     align-items: center;
     height:70vh;
+    overflow:auto;
 }
 
 .poster {
