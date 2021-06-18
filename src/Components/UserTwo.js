@@ -3,8 +3,6 @@ import Movies from './Movies'
 
 
 const UserTwo = (props) => {
-    console.log(props.secondUserOptionsExist)
-    console.log(props.movie)
     return(
         <div className="user">
             {
